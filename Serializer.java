@@ -11,18 +11,20 @@ public class Serializer {
 
 
 	IdentityHashMap<Object, Integer> finSerialized = new IdentityHashMap<Object, Integer>();
-	ArrayList objReferenceSerialized = new ArrayList();
+	ArrayList<Object> objReferenceSerialized = new ArrayList<Object>();
 	int uniqueID = 0;
 	
-	Element topRoot = new Element("serialized");
+	Element topRoot;
 	public Document savedFile = new Document();
 	
-	Class objClass;
+	Class<?> objClass;
 	Field[] objFields;
 	
 	public Document findSerializeObject(Object obj) {
 		
-		serializeObject(obj, uniqueID+1);
+		topRoot = new Element("serialized");
+		
+		serializeObject(obj, uniqueID++);
 		
 		savedFile.setRootElement(topRoot);
 		
@@ -49,12 +51,16 @@ public class Serializer {
 		 * If field is an array, break into segments to be put into XML
 		 */
 		if(obj.getClass().isArray()) {
+			
+			System.out.println("Break into array");
+			
 			Class<?> valType = (obj.getClass().getComponentType());
 			
 			eleObj.setAttribute("length", String.valueOf(Array.getLength(obj)));
 			
 			// Checks if valType is primitive	
 			if(valType.isPrimitive()) {
+				System.out.println("Serialize primitive array");
 				//Loop through primitive-array and add to corresponding element
 				for(int j = 0; j < Array.getLength(obj); j++) {
 					Element val = new Element("value");
@@ -63,6 +69,7 @@ public class Serializer {
 				}
 				System.out.println("Finished serializng primitive array");
 			} else {
+				System.out.println("serialize object ref array");
 				//valType is not primitive
 				//Loop through non-primitive array and add to corresponding element
 				for(int j = 0; j < Array.getLength(obj); j++) {
@@ -76,7 +83,7 @@ public class Serializer {
 			}
 		}
 		
-		/*
+		/*also
 		 * Arrays broken down
 		 * Access fields of objects
 		 */
@@ -97,6 +104,7 @@ public class Serializer {
 				
 			//Check if field is primitive
 			if (fieldVal.getType().isPrimitive()) {
+				System.out.println("Serialize primitive field");
 				//Serialize primitive field
 				Element primField = new Element("field");
 				primField.setAttribute("name", fieldVal.getName());
@@ -115,6 +123,7 @@ public class Serializer {
 				eleObj.addContent(primField);
 				
 			} else {
+				System.out.println("Serialize object field");
 				//Field is not primitive
 				
 				Element objFieldVal = new Element("field");
@@ -125,7 +134,7 @@ public class Serializer {
 				Element ref = new Element("reference");
 				ref.addContent(new Text(String.valueOf(uniqueID)));
 				objReferenceSerialized.add(fieldObj);
-				objReferenceSerialized.add(uniqueID+1);
+				objReferenceSerialized.add(uniqueID++);
 				
 				objFieldVal.addContent(ref);
 				eleObj.addContent(objFieldVal);

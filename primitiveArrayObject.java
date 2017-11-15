@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
 public class primitiveArrayObject {
-	String uInput;
-	char[] arrayPrim;
+	int uInput;
+	int[] arrayPrim;
 		
 	public primitiveArrayObject(Scanner scannerChoice) {
 		while(true) {
 			try {
-				System.out.println("Set the size of the array (from 1 to 10): ");
+				System.out.println("Set the size of the array (from 1 to 5): ");
 				int sizeUser = Integer.parseInt(scannerChoice.nextLine());
 				
-				arrayPrim= new char[sizeUser];
+				arrayPrim= new int[sizeUser];
 				
-				if (sizeUser > 0 && sizeUser < 11) {
-					System.out.println("Set the values for the array");
+				if (sizeUser > 0 && sizeUser < 6) {
+					System.out.println("Set the integer values for the array");
 					for(int i = 0; i < sizeUser; i++) {
-						uInput = scannerChoice.nextLine();		
+						int uInput = Integer.parseInt(scannerChoice.nextLine());		
 						
-						arrayPrim[i] = uInput.charAt(0);
+						arrayPrim[i] = uInput;
 					}
 				} else {
 					System.out.println("Not an acceptable size");
@@ -42,7 +42,7 @@ public class primitiveArrayObject {
 			}
 		}
 		
-		return "Class: Primitive Array \n" + "Field Values \n" + "arrayPrim:{ " + arrayInputs + " }\n";
+		return "\nClass: Primitive Array \n" + "Field Values \n" + "arrayPrim:{ " + arrayInputs + " }\n";
 		
 	}
 }

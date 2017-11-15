@@ -30,7 +30,7 @@ public class referenceObject {
 	}
 	
 	public String toString() {
-		return "Class: reference Object\n" + "**Field Values**\n" + "userNum: " + userNum + "\n" + "userString: " + userString + "\n\n" + "object Reference: \n" + objReference.toString();
+		return "\nClass: reference Object\n" + "**Field Values**\n" + "userNum: " + userNum + "\n" + "userString: " + userString + "\n\n" + "object Reference: \n" + objReference.toString();
 	}
 	
 	

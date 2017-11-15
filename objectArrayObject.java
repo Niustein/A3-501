@@ -40,8 +40,8 @@ public class objectArrayObject {
 	public String toString() {
 		String arrayClassInfo = "";
 		String arrayInfo = "";
-		for (int i = 0; i < 5; i++) {
-			if (i < 4) {
+		for (int i = 0; i < 3; i++) {
+			if (i < 2) {
 				arrayClassInfo += arrayObj[i].getClass().getSimpleName() + ", ";
 			} else {
 				arrayClassInfo += arrayObj[i].getClass().getSimpleName();
@@ -51,7 +51,7 @@ public class objectArrayObject {
 			
 		}
 		
-		return "Class: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
+		return "\nClass: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
 		
 	}
 }

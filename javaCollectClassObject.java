@@ -41,8 +41,8 @@ public class javaCollectClassObject {
 	public String toString() {
 		String arrayClassInfo = "";
 		String arrayInfo = "";
-		for (int i = 0; i < 5; i++) {
-			if (i < 4) {
+		for (int i = 0; i < 3; i++) {
+			if (i < 2) {
 				arrayClassInfo += vectorObjects.get(i).getClass().getSimpleName() + ", ";
 			} else {
 				arrayClassInfo += vectorObjects.getClass().getSimpleName();
@@ -52,7 +52,7 @@ public class javaCollectClassObject {
 			
 		}
 		
-		return "Class: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
+		return "\nClass: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
 		
 	}
 }
