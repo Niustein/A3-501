@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class primitiveArrayObject {
-	int userNum;
-	int[] arrayPrim;
+	String uInput;
+	char[] arrayPrim;
 		
 	public primitiveArrayObject(Scanner scannerChoice) {
 		while(true) {
@@ -10,13 +10,14 @@ public class primitiveArrayObject {
 				System.out.println("Set the size of the array (from 1 to 10): ");
 				int sizeUser = Integer.parseInt(scannerChoice.nextLine());
 				
-				int[] arrayPrim= new int[sizeUser];
+				arrayPrim= new char[sizeUser];
 				
 				if (sizeUser > 0 && sizeUser < 11) {
 					System.out.println("Set the values for the array");
 					for(int i = 0; i < sizeUser; i++) {
-						userNum = Integer.parseInt(scannerChoice.nextLine());
-						arrayPrim[i] = userNum;
+						uInput = scannerChoice.nextLine();		
+						
+						arrayPrim[i] = uInput.charAt(0);
 					}
 				} else {
 					System.out.println("Not an acceptable size");

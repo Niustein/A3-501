@@ -6,7 +6,7 @@ public class objectArrayObject {
 		
 	public objectArrayObject(Scanner scannerChoice) {
 		while(true) {
-				for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < 3; i++) {
 					System.out.println("Which object would you like to add into arrayObj?\n"
 										+ "1: Primiative Object\n"
 										+ "2: Reference Object\n"
