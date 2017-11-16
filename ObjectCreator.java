@@ -1,18 +1,17 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
 public class ObjectCreator {
 	private Scanner uInput;
 	private String uChoice = "";
-	Vector<Object> objectList; 
-	Object lastCreated;
+	ArrayList<Object> objectList; 
 	
 	public ObjectCreator() {
-		objectList = new Vector<Object>();
-		lastCreated = null;
+		objectList = new ArrayList<Object>();
 	}
 	
-	public Vector<Object> userCreator() {
+	public ArrayList<Object> userCreator() {
 		
 		uInput = new Scanner(System.in);
 		while(true) {
@@ -69,32 +68,42 @@ public class ObjectCreator {
 	public void createPrim(Scanner scannerChoice) {
 		Object primObj = new primitiveObject(scannerChoice);
 		objectList.add(primObj);
-		lastCreated = primObj;
 	}
 	
 	public void createRef(Scanner scannerChoice) {
 		Object refObj = new referenceObject(scannerChoice);
 		objectList.add(refObj);
-		lastCreated = refObj;
 	}
 	
 	public void createArrayPrim(Scanner scannerChoice) {
 		Object arrayPrimObj = new primitiveArrayObject(scannerChoice);
 		objectList.add(arrayPrimObj);
-		lastCreated = arrayPrimObj;
 	}
 	
 	public void createArrayObj(Scanner scannerChoice) {
 		Object arrayObjectObj = new objectArrayObject(scannerChoice);
 		objectList.add(arrayObjectObj);
-		lastCreated = arrayObjectObj;
 	}
 	
 	public void createJavaCollectClassObj (Scanner scannerChoice) {
 		Object javaCollectClassObj = new javaCollectClassObject(scannerChoice);
 		objectList.add(javaCollectClassObj);
-		lastCreated = javaCollectClassObj;
 	}
 	
+	public int getSize() {
+		return objectList.size(); 
+	}
+	
+	public void showData(int val) {
+		try {
+			System.out.println(objectList.get(val).toString());
+		} catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Object> getObjectList(){
+		return objectList;
+	}
 	
 }

@@ -4,6 +4,8 @@ public class primitiveArrayObject {
 	int uInput;
 	int[] arrayPrim;
 		
+	public primitiveArrayObject() {}
+	
 	public primitiveArrayObject(Scanner scannerChoice) {
 		while(true) {
 			try {
@@ -42,7 +44,7 @@ public class primitiveArrayObject {
 			}
 		}
 		
-		return "\nClass: Primitive Array \n" + "Field Values \n" + "arrayPrim:{ " + arrayInputs + " }\n";
+		return "Class: Primitive Array \n" + "**Field Values** \n" + "arrayPrim:{ " + arrayInputs + " }\n";
 		
 	}
 }

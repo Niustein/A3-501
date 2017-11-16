@@ -17,8 +17,8 @@ public class Serializer {
 	Element topRoot;
 	public Document savedFile = new Document();
 	
-	Class<?> objClass;
-	Field[] objFields;
+
+
 	
 	public Document findSerializeObject(Object obj) {
 		
@@ -44,9 +44,10 @@ public class Serializer {
 		eleObj.setAttribute("ID", String.valueOf(uID));
 		finSerialized.put(obj,  uID);
 		
-		objClass = obj.getClass();
-		objFields = objClass.getDeclaredFields();
+		Class<?> objClass = obj.getClass();
+
 		
+		System.out.println(obj.getClass());
 		/*
 		 * If field is an array, break into segments to be put into XML
 		 */
@@ -54,20 +55,23 @@ public class Serializer {
 			
 			System.out.println("Break into array");
 			
-			Class<?> valType = (obj.getClass().getComponentType());
+			Class<?> valType = (objClass.getComponentType());
 			
 			eleObj.setAttribute("length", String.valueOf(Array.getLength(obj)));
 			
 			// Checks if valType is primitive	
 			if(valType.isPrimitive()) {
 				System.out.println("Serialize primitive array");
+				
 				//Loop through primitive-array and add to corresponding element
 				for(int j = 0; j < Array.getLength(obj); j++) {
 					Element val = new Element("value");
 					val.addContent(Array.get(obj,  j).toString());
 					eleObj.addContent(val);
 				}
+				
 				System.out.println("Finished serializng primitive array");
+				
 			} else {
 				System.out.println("serialize object ref array");
 				//valType is not primitive
@@ -82,6 +86,8 @@ public class Serializer {
 				System.out.println("Finished serializing object reference Array");
 			}
 		}
+		
+		Field[] objFields = objClass.getDeclaredFields();
 		
 		/*also
 		 * Arrays broken down

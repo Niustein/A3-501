@@ -51,7 +51,7 @@ public class objectArrayObject {
 			
 		}
 		
-		return "\nClass: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
+		return "\nClass: objectArrayObject \n" + "**Field Values** \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
 		
 	}
 }

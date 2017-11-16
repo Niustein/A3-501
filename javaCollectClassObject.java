@@ -1,9 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class javaCollectClassObject {
 
-	Vector<Object> vectorObjects = new Vector<Object>();
+	ArrayList<Object> vectorObjects = new ArrayList<Object>();
 	
 	public javaCollectClassObject(Scanner scannerChoice) {
 		while(true) {
@@ -52,7 +52,7 @@ public class javaCollectClassObject {
 			
 		}
 		
-		return "\nClass: objectArrayObject \n" + "Field Values \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
+		return "\nClass: objectArrayObject \n" + "**Field Values** \n" + "arrayObj:{ " + arrayClassInfo + " }\n" + arrayInfo;
 		
 	}
 }
